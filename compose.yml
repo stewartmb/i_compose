@@ -1,33 +1,26 @@
 version: '3'
 services:
-  java-microservice:
-    image: stewartmb/java-microservice:latest
-    ports:
-      - "8011:8011"
+  ingesta-mysql:
+    build:
+      context: ./ingesta01
+    container_name: ingesta_mysql
     networks:
-      - microservice-network
+      - ingesta-network
 
-  api-micro2:
-    image: stewartmb/api_micro2:latest
-    ports:
-      - "8012:8012"
+  ingesta-postgres:
+    build:
+      context: ./ingesta02
+    container_name: ingesta_postgres
     networks:
-      - microservice-network
+      - ingesta-network
 
-  api-micro3:
-    image: stewartmb/api_micro3:latest
-    ports:
-      - "8013:8013"
+  ingesta-mongodb:
+    build:
+      context: ./ingesta03
+    container_name: ingesta_mongodb
     networks:
-      - microservice-network
-
-  orquestador:
-    image: stewartmb/orquestador:latest
-    ports:
-      - "8010:8010"
-    networks:
-      - microservice-network
+      - ingesta-network
 
 networks:
-  microservice-network:
+  ingesta-network:
     driver: bridge
