@@ -1,17 +1,17 @@
 version: '3'
 services:
   ingesta01:
-    build: ./ingesta01
+    image: stewartmb/ingesta01:latest
     volumes:
       - ~/.aws:/root/.aws
 
   ingesta02:
-    build: ./ingesta02
+    image: stewartmb/ingesta02:latest
     volumes:
       - ~/.aws:/root/.aws
 
   ingesta03:
-    build: ./ingesta03
+    image: stewartmb/ingesta03:latest
     volumes:
       - ~/.aws:/root/.aws
 
