@@ -1,26 +1,18 @@
 version: '3'
 services:
-  ingesta-mysql:
-    build:
-      context: ./ingesta01
-    container_name: ingesta_mysql
-    networks:
-      - ingesta-network
+  ingesta01:
+    build: ./ingesta01
+    volumes:
+      - ~/.aws:/root/.aws
 
-  ingesta-postgres:
-    build:
-      context: ./ingesta02
-    container_name: ingesta_postgres
-    networks:
-      - ingesta-network
+  ingesta02:
+    build: ./ingesta02
+    volumes:
+      - ~/.aws:/root/.aws
 
-  ingesta-mongodb:
-    build:
-      context: ./ingesta03
-    container_name: ingesta_mongodb
-    networks:
-      - ingesta-network
+  ingesta03:
+    build: ./ingesta03
+    volumes:
+      - ~/.aws:/root/.aws
 
-networks:
-  ingesta-network:
-    driver: bridge
+#docker-compose up --build
